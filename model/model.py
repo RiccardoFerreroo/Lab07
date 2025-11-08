@@ -26,4 +26,4 @@ class Model:
     def get_musei(self):
         """ Restituisce la lista di tutti i musei."""
         # TODO
-
+        print("cancellalo dopo")
