@@ -18,7 +18,7 @@ class Controller:
         self.epoca_selezionata = None
 
     # POPOLA DROPDOWN
-    # TODO
+
     def get_lista_n_musei(self):
        return self._model.get_musei()
 
@@ -32,9 +32,8 @@ class Controller:
         epoca = self.epoca_selezionata
         artefatti = self._model.get_artefatti_filtrati(museo, epoca)
 
-        if artefatti:
-            self._view.popola_lista_artefatti(artefatti)
+
+        self._view.popola_lista_artefatti(artefatti)
 
 
-    # AZIONE: MOSTRA ARTEFATTI
-    # TODO
+

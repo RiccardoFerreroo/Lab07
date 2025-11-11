@@ -41,7 +41,8 @@ class View:
 
     def popola_lista_artefatti(self, artefatti):
         self.listview_artefatti.controls.clear()
-
+        if not artefatti:
+            self.alert.show_alert("No artefatti presenti")
         for artefatto in artefatti:
             self.listview_artefatti.controls.append(ft.Text(artefatto))
         self.page.update()
