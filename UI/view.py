@@ -22,7 +22,7 @@ class View:
 
         # Controller
         self.controller = None
-
+        self.listview_artefatti = ft.ListView(expand= True, spacing = 10, auto_scroll= True)
     def show_alert(self, messaggio):
         self.alert.show_alert(messaggio)
 
@@ -39,6 +39,12 @@ class View:
         epoca_selezionata = e.control.value
         self.controller.epoca_selezionata = epoca_selezionata
 
+    def popola_lista_artefatti(self, artefatti):
+        self.listview_artefatti.controls.clear()
+
+        for artefatto in artefatti:
+            self.listview_artefatti.controls.append(ft.Text(artefatto))
+        self.page.update()
 
     def load_interface(self):
         """ Crea e aggiunge gli elementi di UI alla pagina e la aggiorna. """
@@ -55,8 +61,9 @@ class View:
                                              max_menu_height=200, width=250, on_change= self.on_epoca_change)
 
         # Sezione 3: Artefatti
-        self.artefatti_button = ft.ElevatedButton(text="Mostra Artefatti", width=150, on_click = self.controller.sorta_artefatti())
+        self.artefatti_button = ft.ElevatedButton(text="Mostra Artefatti", width=150, on_click = self.controller.sorta_artefatti)
         # TODO
+
 
 
         # --- Toggle Tema ---
@@ -76,7 +83,8 @@ class View:
             # TODO
             self.artefatti_button,
             # Sezione 3: Artefatti
-            # TODO
+            ft.Divider(),
+            self.listview_artefatti
         )
 
         self.page.scroll = "adaptive"

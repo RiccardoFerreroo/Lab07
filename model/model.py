@@ -20,14 +20,15 @@ class Model:
             return []
         lista_artefatti_filtrati = []
         artefatti = self._artefatto_dao.get_all()
+
         for oggetto in artefatti:
-            if oggetto.museo == museo and oggetto.epoca == epoca:
+            if oggetto.id_museo == museo and oggetto.epoca == epoca:
                 lista_artefatti_filtrati.append(oggetto)
                 #Visualizzare gli artefatti in uno specifico museo di una specifica epoca
             elif museo == 'Nessun filtro' and epoca == 'Nessun filtro':
                 lista_artefatti_filtrati.append(oggetto)
                 # Visualizzare gli artefatti presenti in tutti i musei
-            elif oggetto.museo == museo and epoca == 'Nessun filtro':
+            elif oggetto.id_museo == museo and epoca == 'Nessun filtro':
                 lista_artefatti_filtrati.append(oggetto)
                 # Visualizzare gli artefatti presenti in uno specifico museo
             elif museo == 'Nessun filtro' and oggetto.epoca == epoca:

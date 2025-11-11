@@ -28,8 +28,12 @@ class Controller:
     # CALLBACKS DROPDOWN
     # qua vado al model e faccio il sorting
     def sorta_artefatti(self,e ):
-        self._model.get_artefatti_filtrati(self.museo_selezionato, self.epoca_selezionata)
+        museo = self.museo_selezionato
+        epoca = self.epoca_selezionata
+        artefatti = self._model.get_artefatti_filtrati(museo, epoca)
 
+        if artefatti:
+            self._view.popola_lista_artefatti(artefatti)
 
 
     # AZIONE: MOSTRA ARTEFATTI
