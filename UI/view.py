@@ -32,6 +32,14 @@ class View:
     def update(self):
         self.page.update()
 
+    def on_museo_change(self, e):
+        museo_selezionato = e.control.value #leggo val dropdwn
+        self.controller.museo_selezionato = museo_selezionato
+    def on_epoca_change(self, e):
+        epoca_selezionata = e.control.value
+        self.controller.epoca_selezionata = epoca_selezionata
+
+
     def load_interface(self):
         """ Crea e aggiunge gli elementi di UI alla pagina e la aggiorna. """
         # --- Sezione 1: Intestazione ---
@@ -41,11 +49,15 @@ class View:
         # TODO
         self.dropdown_musei = ft.DropdownM2( label="Musei", options=[ft.dropdown.Option("Nessun filtro")]+[
                                                                    ft.dropdown.Option(museo) for museo in self.controller.get_lista_n_musei()],
-                                            max_menu_height=200, width=250)
-        self.dropdown_epoche = ft.DropdownM2(label="epoche", options=[ft.dropdown.Option("Nessun filtro")], width=250)
-        # Sezione 3: Artefatti
+                                            max_menu_height=200, width=250, on_change= self.on_museo_change)
+        self.dropdown_epoche = ft.DropdownM2(label="epoche", options=[ft.dropdown.Option("Nessun filtro")]+ [
+                                                                        ft.dropdown.Option(epoca) for epoca in self.controller.get_lista_epoca()],
+                                             max_menu_height=200, width=250, on_change= self.on_epoca_change)
 
+        # Sezione 3: Artefatti
+        self.artefatti_button = ft.ElevatedButton(text="Mostra Artefatti", width=150, on_click = self.controller.sorta_artefatti())
         # TODO
+
 
         # --- Toggle Tema ---
         self.toggle_cambia_tema = ft.Switch(label="Tema scuro", value=True, on_change=self.cambia_tema)
@@ -62,7 +74,7 @@ class View:
             ft.Row( controls=[self.dropdown_musei, self.dropdown_epoche],
                           spacing=300, alignment= ft.MainAxisAlignment.CENTER),
             # TODO
-
+            self.artefatti_button,
             # Sezione 3: Artefatti
             # TODO
         )

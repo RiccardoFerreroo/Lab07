@@ -26,7 +26,11 @@ class Controller:
         return self._model.get_epoche()
 
     # CALLBACKS DROPDOWN
-    # TODO
+    # qua vado al model e faccio il sorting
+    def sorta_artefatti(self,e ):
+        self._model.get_artefatti_filtrati(self.museo_selezionato, self.epoca_selezionata)
+
+
 
     # AZIONE: MOSTRA ARTEFATTI
     # TODO

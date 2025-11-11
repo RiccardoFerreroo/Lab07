@@ -24,7 +24,7 @@ class ArtefattoDAO:
         for row in cursor.fetchall():
             a = Artefatto(  id= row['id'],
                             nome =row['nome'],
-                            tipologia= row['tpologia'],
+                            tipologia= row['tipologia'],
                             epoca= row['epoca'],
                             id_museo = row['id_museo'])
             artefatti.append(a)
