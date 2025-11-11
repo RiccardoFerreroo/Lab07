@@ -1,4 +1,6 @@
 import flet as ft
+from flet.core.types import MainAxisAlignment
+
 from UI.alert import AlertManager
 
 '''
@@ -37,8 +39,12 @@ class View:
 
         # --- Sezione 2: Filtraggio ---
         # TODO
-
+        self.dropdown_musei = ft.Dropdown( label="Musei", options=[ft.dropdown.Option("opzione 1"),
+                                                                   ft.dropdown.Option("opzione 2")],
+                                           width=250)
+        self.dropdown_epoche = ft.Dropdown(label="epoche", options=[], width=250)
         # Sezione 3: Artefatti
+
         # TODO
 
         # --- Toggle Tema ---
@@ -53,6 +59,8 @@ class View:
             ft.Divider(),
 
             # Sezione 2: Filtraggio
+            ft.Row( controls=[self.dropdown_musei, self.dropdown_epoche],
+                          spacing=300, alignment= ft.MainAxisAlignment.CENTER),
             # TODO
 
             # Sezione 3: Artefatti

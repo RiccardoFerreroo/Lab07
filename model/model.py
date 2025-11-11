@@ -20,10 +20,11 @@ class Model:
 
     def get_epoche(self):
         """Restituisce la lista di tutte le epoche."""
+
         # TODO
 
     # --- MUSEI ---
     def get_musei(self):
         """ Restituisce la lista di tutti i musei."""
         # TODO
-        print("cancellalo dopo")
+
