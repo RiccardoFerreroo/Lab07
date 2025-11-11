@@ -16,28 +16,33 @@ class Model:
     # --- ARTEFATTI ---
     def get_artefatti_filtrati(self, museo:str, epoca:str):
         """Restituisce la lista di tutti gli artefatti filtrati per museo e/o epoca (filtri opzionali)."""
-        if museo == None or epoca == None:
-            return []
-        lista_artefatti_filtrati = []
         artefatti = self._artefatto_dao.get_all()
+        musei = self._museo_dao.get_all()
 
-        for oggetto in artefatti:
-            if oggetto.id_museo == museo and oggetto.epoca == epoca:
-                lista_artefatti_filtrati.append(oggetto)
-                #Visualizzare gli artefatti in uno specifico museo di una specifica epoca
-            elif museo == 'Nessun filtro' and epoca == 'Nessun filtro':
-                lista_artefatti_filtrati.append(oggetto)
-                # Visualizzare gli artefatti presenti in tutti i musei
-            elif oggetto.id_museo == museo and epoca == 'Nessun filtro':
-                lista_artefatti_filtrati.append(oggetto)
-                # Visualizzare gli artefatti presenti in uno specifico museo
-            elif museo == 'Nessun filtro' and oggetto.epoca == epoca:
-                lista_artefatti_filtrati.append(oggetto)
-                # Visualizzare gli artefatti di una specifica epoca
-            else:
-                pass
+        #trovo l'id del museo selezionato
+        id_museo_selezionato = None
+        if museo != None:
+            for m in musei:
+                if m.nome == museo:
+                    id_museo_selezionato = m.id
+                    break
+        lista_artefatti_filtrati = []
 
+        for a in artefatti:
+            if museo == 'Nessun filtro' and epoca =='Nessun filtro':
+                lista_artefatti_filtrati.append(a)
+            elif museo != 'Nessun filtro' and epoca != 'Nessun filtro':
+                if a.id_museo == id_museo_selezionato and a.epoca == epoca:
+                    lista_artefatti_filtrati.append(a)
+            elif museo == 'Nessun filtro' and epoca != 'Nessun filtro':
+                if a.epoca == epoca:
+                    lista_artefatti_filtrati.append(a)
+            elif museo != 'Nessun filtro' and epoca == 'Nessun filtro':
+                if a.id_museo == id_museo_selezionato:
+                    lista_artefatti_filtrati.append(a)
         return lista_artefatti_filtrati
+
+
 
 
 
