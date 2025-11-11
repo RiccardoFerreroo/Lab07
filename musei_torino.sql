@@ -35,7 +35,6 @@ INSERT INTO `museo` (nome, tipologia) VALUES
 ('Museo Pietro Micca e dell’Assedio di Torino del 1706', 'Storico'),
 ('Museo di Anatomia Umana Luigi Rolando', 'Scientifico'),
 ('Museo di Antropologia Criminale Cesare Lombroso', 'Scientifico'),
-('Pinacoteca dell’Accademia Albertina', 'Artistico'),
 ('Museo della Sindone', 'Religioso'),
 ('Museo Ferroviario Piemontese', 'Tecnologico');
 /*!40000 ALTER TABLE `museo` ENABLE KEYS */;
