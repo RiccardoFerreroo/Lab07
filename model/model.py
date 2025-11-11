@@ -22,13 +22,13 @@ class Model:
             if oggetto.museo == museo and oggetto.epoca == epoca:
                 lista_artefatti_filtrati.append(oggetto)
                 #Visualizzare gli artefatti in uno specifico museo di una specifica epoca
-            elif museo == None and epoca == None:
+            elif museo == 'Nessun filtro' and epoca == 'Nessun filtro':
                 lista_artefatti_filtrati.append(oggetto)
                 # Visualizzare gli artefatti presenti in tutti i musei
-            elif oggetto.museo == museo and epoca == None:
+            elif oggetto.museo == museo and epoca == 'Nessun filtro':
                 lista_artefatti_filtrati.append(oggetto)
                 # Visualizzare gli artefatti presenti in uno specifico museo
-            elif museo == None and oggetto.epoca == epoca:
+            elif museo == 'Nessun filtro' and oggetto.epoca == epoca:
                 lista_artefatti_filtrati.append(oggetto)
                 # Visualizzare gli artefatti di una specifica epoca
             else:
