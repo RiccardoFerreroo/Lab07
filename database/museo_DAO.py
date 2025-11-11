@@ -10,4 +10,26 @@ class MuseoDAO:
     def __init__(self):
         pass
 
-    # TODO
+    def get_all(self):
+
+        cnx = ConnessioneDB.get_connection()
+        if cnx is None:
+            return[]
+        cursor = cnx.cursor(dictionary=True)
+        query = "SELECT * FROM museo"
+        cursor.excute(query)
+
+        musei=[]
+        for row in cursor.fetchall():
+            m = Museo(  id = row['id'],
+                        nome = row['nome'],
+                        tipologia = row['tipologia']
+                        )
+            musei.append(m)
+        cursor.close()
+        cnx.close()
+
+        return musei
+
+
+
