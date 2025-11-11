@@ -39,10 +39,10 @@ class View:
 
         # --- Sezione 2: Filtraggio ---
         # TODO
-        self.dropdown_musei = ft.Dropdown( label="Musei", options=[ft.dropdown.Option("opzione 1"),
-                                                                   ft.dropdown.Option("opzione 2")],
-                                           width=250)
-        self.dropdown_epoche = ft.Dropdown(label="epoche", options=[], width=250)
+        self.dropdown_musei = ft.DropdownM2( label="Musei", options=[ft.dropdown.Option("Nessun filtro")]+[
+                                                                   ft.dropdown.Option(museo) for museo in self.controller.get_lista_n_musei()],
+                                            max_menu_height=200, width=250)
+        self.dropdown_epoche = ft.DropdownM2(label="epoche", options=[ft.dropdown.Option("Nessun filtro")], width=250)
         # Sezione 3: Artefatti
 
         # TODO

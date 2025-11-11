@@ -17,7 +17,7 @@ class MuseoDAO:
             return[]
         cursor = cnx.cursor(dictionary=True)
         query = "SELECT * FROM museo"
-        cursor.excute(query)
+        cursor.execute(query)
 
         musei=[]
         for row in cursor.fetchall():

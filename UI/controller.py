@@ -19,6 +19,11 @@ class Controller:
 
     # POPOLA DROPDOWN
     # TODO
+    def get_lista_n_musei(self):
+       return self._model.get_musei()
+
+    def get_lista_epoca(self):
+        return self._model.get_epoche()
 
     # CALLBACKS DROPDOWN
     # TODO
